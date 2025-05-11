@@ -1,15 +1,17 @@
-# Real-Time Streaming Data Pipeline for Transport for London(Tfl)
+# Real-Time Streaming Data Pipeline for Transport for London(TfL)
 
-stream-tfl-to-cassandra is an end-to-end real-time data streaming pipeline that ingests live arrivals data from the Transport for London (TfL) API. This project is built using technologies like Apache Spark, Apache Airflow, Apache Kafka, Cassandra and Docker.
-
-## Architecture Overview
+This project implements a real-time streaming data pipeline that fetches live transport arrival data from the Transport for London (TFL) API, processes it in a distributed manner, and stores it for analytics. The pipeline leverages the following data engineering tools - all orchestrated with Docker.
 
 - **Apache Airflow**: Schedules and orchestrates the TfL API data ingestion pipeline.
-- **Kafka**: Distributed message broker to stream data, Buffers real-time transport events (tubes and delays).  
+- **Kafka**: Distributed messaging to stream data, buffers transport events (tubes and delays), decoupling data producers and consumers.  
 - **Apache Spark**: Consumes from Kafka, parses, and transforms messages.
 - **Apache Cassandra**: Stores the final processed data for low latency and higher scalability.
 - **PostgreSQL**: Used by Airflow for backend metadata storage.
 - **Docker Compose**: Orchestrates all the services on a containerised platform.
+
+## System Architecture
+
+
 
 ## Project Structure
 
@@ -65,7 +67,7 @@ We can monitor tfl arrivals of the london's kings cross station being sent to ka
 
 <img width="1176" alt="Control center monitoring" src="https://github.com/user-attachments/assets/227242f0-64c9-4119-89d5-15fddb78c55a" />
 
-Data store on cassandra:
+Sample data store on cassandra:
 
 <img width="920" alt="TfL_arrivals" src="https://github.com/user-attachments/assets/c894ddea-0b5d-4df4-b598-b3d85750a7f7" />
 
