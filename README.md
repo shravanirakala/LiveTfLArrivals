@@ -1,11 +1,11 @@
 # Real-Time Streaming Data Pipeline for Transport for London(Tfl)
 
-stream-tfl-to-cassandra is an end-to-end real-time data streaming pipeline that ingests live arrivals data from the Transport for London (TfL) API. Built using technologies like Apacche Spark, Apache Airflow, Apache Kafka, Cassandra and Docker.
+stream-tfl-to-cassandra is an end-to-end real-time data streaming pipeline that ingests live arrivals data from the Transport for London (TfL) API. This project is built using technologies like Apache Spark, Apache Airflow, Apache Kafka, Cassandra and Docker.
 
 ## Architecture Overview
 
 - **Apache Airflow**: Schedules and orchestrates the TfL API data ingestion pipeline.
-- **Kafka**: Broker for streaming data, Buffers real-time transport events (tubes and delays).  
+- **Kafka**: Distributed message broker to stream data, Buffers real-time transport events (tubes and delays).  
 - **Apache Spark**: Consumes from Kafka, parses, and transforms messages.
 - **Apache Cassandra**: Stores the final processed data for low latency and higher scalability.
 - **PostgreSQL**: Used by Airflow for backend metadata storage.
@@ -13,23 +13,7 @@ stream-tfl-to-cassandra is an end-to-end real-time data streaming pipeline that 
 
 ## Project Structure
 
-stream-tfl-to-cassandra/
-│
-├── dags/
-│ ├── kafka.py # Airflow DAG to fetch TfL data and push to Kafka
-│ └── utils/
-│ ├── kafka_utils.py # Kafka producer utilities
-│ └── tfl_api.py # TfL API wrapper
-│
-├── spark/
-│ ├── stream_to_cassandra.py # Spark Streaming job to consume Kafka and write to Cassandra
-│ └── cassandra_schema.py # Cassandra schema/table creation script
-│
-├── docker-compose.yml 
-├── Dockerfile # Builds the Spark application container
-├── requirements.txt # Python dependencies
-├── README.md 
-└── LICENSE             
+<pre lang="markdown"> ### Project Structure ```text stream-tfl-to-cassandra/ │ ├── dags/ │ ├── kafka.py # Airflow DAG to fetch TfL data and push to Kafka │ └── utils/ │ ├── kafka_utils.py # Kafka producer utilities │ └── tfl_api.py # TfL API wrapper │ ├── spark/ │ ├── stream_to_cassandra.py # Spark Streaming job to consume Kafka and write to Cassandra │ └── cassandra_schema.py # Cassandra schema/table creation script │ ├── docker-compose.yml # Docker Compose configuration ├── Dockerfile # Builds the Spark application container ├── requirements.txt # Python dependencies ├── README.md └── LICENSE ``` </pre>           
 
 ## Build and Start the Pipeline
 docker-compose up -d --build
@@ -52,9 +36,8 @@ Docker launches Kafka, Zookeeper, Cassandra, Airflow, Spark master and other dep
 <img width="1530" alt="Airflow DAG" src="https://github.com/user-attachments/assets/d9b40bfc-43ad-4bbb-a1c8-5e5fa57eaa63" />
 
 ## Run Spark Job
-- docker exec -it tfl_app spark-submit \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,com.datastax.spark:spark-cassandra-connector_2.12:3.4.1 \
-/app/spark/stream_to_cassandra.py
+<pre lang="markdown"> ### Run Spark Streaming Job inside Docker ```bash docker exec -it tfl_app spark-submit \ --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,com.datastax.spark:spark-cassandra-connector_2.12:3.4.1 \ /app/spark/stream_to_cassandra.py ``` </pre>
+
 
 ### Sample Outputs:
 
