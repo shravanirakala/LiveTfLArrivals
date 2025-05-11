@@ -36,6 +36,9 @@ docker-compose up -d --build
 
 Docker launches Kafka, Zookeeper, Cassandra, Airflow, Spark master and other dependencies, manages everything in one place
 
+<img width="661" alt="Docker services status" src="https://github.com/user-attachments/assets/191aa374-b30c-4494-9b97-5c9856b6c369" />
+
+
 # Access points
 Service	URL	Port
 Kafka Control Center	http://localhost:9021	9021
@@ -55,7 +58,7 @@ We can monitor tfl arrivals of the london's kings cross station being sent to ka
 
 <img width="1176" alt="Control center monitoring" src="https://github.com/user-attachments/assets/227242f0-64c9-4119-89d5-15fddb78c55a" />
 
-Data stored on cassandra:
+Data  cassandra:
 
 <img width="920" alt="TfL_arrivals" src="https://github.com/user-attachments/assets/c894ddea-0b5d-4df4-b598-b3d85750a7f7" />
 
