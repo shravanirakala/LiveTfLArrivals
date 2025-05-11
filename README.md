@@ -10,6 +10,7 @@ This project implements a real-time streaming data pipeline that fetches live tr
 - **Docker Compose**: Orchestrates all the services on a containerised platform.
 
 ## System Architecture
+![image](https://github.com/user-attachments/assets/2df883cc-662a-49a9-94aa-7e703f1d2fa3)
 
 
 
