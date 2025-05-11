@@ -1,0 +1,8 @@
+requests==2.32.3
+confluent-kafka==2.9.0
+pyspark==3.5.0
+cassandra-driver==3.28.0
+python-dotenv==1.0.0
+apache-airflow==2.10.5
+apache-airflow-providers-apache-spark==5.0.1
+psycopg2-binary==2.9.9
